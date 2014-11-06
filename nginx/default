@@ -1,0 +1,22 @@
+server
+{
+	listen       80;
+	server_name  localhost;
+
+	# file size upload limit
+	client_max_body_size 5M;
+
+	# don't rewrite for static files
+	location ~* ^.+\.(jpg|jpeg|gif|png|ico|css|zip|tgz|gz|rar|bz2|pdf|txt|tar|wav|bmp|rtf|js|flv|swf|html|htm|map|ttf|woff)$
+	{
+		root   /var/www;
+	}
+
+	location /
+	{
+		root   /var/www;
+		index  index.cfm index.html index.htm;
+		include proxy-params;
+		include cfwheels-rewrite-rules;
+	}
+}

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    version="2.5">
+
+    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>listings</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+  <servlet>
+    <servlet-name>CFMLServlet</servlet-name>
+    <servlet-class>railo.loader.servlet.CFMLServlet</servlet-class>
+     <init-param>
+        <param-name>configuration</param-name>
+        <param-value>{web-root-directory}/WEB-INF/railo/</param-value>
+        <description>Configuraton directory</description>
+     </init-param>
+     <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+     <servlet-name>CFMLServlet</servlet-name>
+     <url-pattern>*.cfm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+     <servlet-name>CFMLServlet</servlet-name>
+     <url-pattern>*.cfml</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+     <servlet-name>CFMLServlet</servlet-name>
+     <url-pattern>*.cfc</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping> 
+      <servlet-name>CFMLServlet</servlet-name> 
+      <url-pattern>/rewrite.cfm/*</url-pattern> 
+  </servlet-mapping> 
+
+    <servlet>
+        <servlet-name>jsp</servlet-name>
+        <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+        <init-param>
+            <param-name>fork</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>xpoweredBy</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <!-- The mapping for the default servlet -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+  
+    <mime-mapping>
+        <extension>css</extension>
+        <mime-type>text/css</mime-type>
+    </mime-mapping>
+    
+    <mime-mapping>
+        <extension>gif</extension>
+        <mime-type>image/gif</mime-type>
+    </mime-mapping>
+    
+    <mime-mapping>
+        <extension>htm</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    
+    <mime-mapping>
+        <extension>jpeg</extension>
+        <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jpg</extension>
+        <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>js</extension>
+        <mime-type>text/javascript</mime-type>
+    </mime-mapping>
+
+    <welcome-file-list>
+      <welcome-file>index.cfm</welcome-file>
+      <welcome-file>index.cfml</welcome-file>
+      <welcome-file>index.html</welcome-file>
+      <welcome-file>index.htm</welcome-file>
+    </welcome-file-list>
+
+</web-app>

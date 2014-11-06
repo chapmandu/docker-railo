@@ -1,0 +1,6 @@
+# cfwheels rewrite rules
+if (!-f $request_filename)
+{
+	rewrite ^/(.*)$ /rewrite.cfm/$1 break;
+	break;
+}
