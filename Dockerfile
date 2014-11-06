@@ -12,7 +12,7 @@ RUN RAILO_VERSION="4.2.1.008" \
 	&& RAILO_INSTALLER="railo-$RAILO_VERSION-pl0-linux-x64-installer.run" \
 	&& wget -O /tmp/$RAILO_INSTALLER http://www.getrailo.org/down.cfm?item=/railo/remote/download42/$RAILO_VERSION/tomcat/linux/$RAILO_INSTALLER \
 	&& chmod -R 744 /tmp/$RAILO_INSTALLER \
-	&& /tmp/$RAILO_INSTALLER --mode unattended --installconn false --installiis false --railopass change-me-to-something-viable \
+	&& /tmp/$RAILO_INSTALLER --mode unattended --installconn false --installiis false --railopass change_me_to_something_viable \
 	&& rm -rf /tmp/$RAILO_INSTALLER
 
 # make web root
