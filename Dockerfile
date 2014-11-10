@@ -1,4 +1,4 @@
-FROM centos:centos5
+FROM centos:centos7
 MAINTAINER Adam Chapman <adam.p.chapman@gmail.com>
 
 # install the epel repository for additional packages
@@ -17,8 +17,8 @@ RUN RAILO_VERSION="4.2.1.008" \
 
 # make web root
 RUN mkdir /var/www
-COPY index.cfm /var/www/index.cfm
-COPY rewrite.cfm /var/www/rewrite.cfm
+COPY app/index.cfm /var/www/index.cfm
+COPY app/rewrite.cfm /var/www/rewrite.cfm
 
 # nginx config
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
@@ -34,7 +34,7 @@ COPY railo/server.xml /opt/railo/tomcat/conf/server.xml
 EXPOSE 80 8080
 
 # start script
-ADD start.sh /start.sh
+ADD scripts/start.sh /start.sh
 RUN chmod +x /start.sh
 
 # start services
