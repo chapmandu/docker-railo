@@ -3,6 +3,7 @@ MAINTAINER Adam Chapman <adam.p.chapman@gmail.com>
 
 # install the epel repository for additional packages
 RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
+RUN rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 
 # base packages
 RUN yum upgrade -y && yum install -y wget nginx
