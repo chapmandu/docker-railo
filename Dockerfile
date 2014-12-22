@@ -14,8 +14,8 @@ RUN RAILO_VERSION="4.2.1.008" \
 
 # make web root
 RUN mkdir /var/www
-COPY app/index.cfm /var/www/index.cfm
-COPY app/rewrite.cfm /var/www/rewrite.cfm
+# copy entire contents of App folder into webroot
+COPY app/ /var/www/
 
 # nginx config
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
